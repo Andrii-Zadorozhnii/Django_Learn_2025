@@ -5,11 +5,17 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.template.loader import render_to_string
 
-menu = ["About", 'Add post', 'Contact', 'Login']
 # class MyClass:
 #     def __init__(self, a, b):
 #         self.a = a
 #         self.b = b
+
+menu= [
+    {"title": "About", "url_name": "about"},
+    {"title": "Add post", "url_name": "addpage"},
+    {"title": "Contact", "url_name": "contact"},
+    {"title": "Login", "url_name": "login"},
+]
 
 data_db = [
     {"id": 1, "title": "Angelina Joly", "content": "Biography Angelina Joly", "is_published": True},
@@ -28,7 +34,6 @@ def index(request):
         "menu": menu,
         "posts": data_db,
 
-
         # "float": 28.56,
         # "lst": [1, 2, "three", True],
         # "set": {1,2,3,4,5},
@@ -44,27 +49,37 @@ def about(request):
     return render(request, 'women/about.html', data)
 
 
+def show_post(request, post_id):
+    return HttpResponse(f'Post id: {post_id}')
 
+def addpage(request):
+    return HttpResponse('Add page')
 
-def categories(request, cat_id):
-    return HttpResponse(f'<h1>Category</h1><p>id: {cat_id}</p>')
+def contacts(request):
+    return HttpResponse('Contacts')
 
-def categories_by_slug(request, cat_slug):
+def login(request):
+    return HttpResponse('Login')
 
-    if request.GET:
-        print(request.GET)
-
-    if request.POST:
-        print(request.POST)
-    return HttpResponse(f'<h1>Category</h1><p>slug: {cat_slug}</p>')
-
-def archive(request, year):
-
-    if year > 2023:
-        uri = reverse('cats', args=('sport',))
-        return redirect('/')
-    return HttpResponse(f'<h1>Archive by years</h1><p>{year}</p>')
 
 def page_not_found(request, exception):
     return HttpResponseNotFound('<h1>Page not found</h1>')
 
+# def categories(request, cat_id):
+#     return HttpResponse(f'<h1>Category</h1><p>id: {cat_id}</p>')
+
+# def categories_by_slug(request, cat_slug):
+#
+#     if request.GET:
+#         print(request.GET)
+#
+#     if request.POST:
+#         print(request.POST)
+#     return HttpResponse(f'<h1>Category</h1><p>slug: {cat_slug}</p>')
+#
+# def archive(request, year):
+#
+#     if year > 2023:
+#         uri = reverse('cats', args=('sport',))
+#         return redirect('/')
+#     return HttpResponse(f'<h1>Archive by years</h1><p>{year}</p>')
