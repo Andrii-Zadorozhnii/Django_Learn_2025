@@ -6,23 +6,34 @@ from django.urls import reverse
 from django.template.loader import render_to_string
 
 menu = ["About", 'Add post', 'Contact', 'Login']
-class MyClass:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
+# class MyClass:
+#     def __init__(self, a, b):
+#         self.a = a
+#         self.b = b
 
+data_db = [
+    {"id": 1, "title": "Angelina Joly", "content": "Biography Angelina Joly", "is_published": True},
+    {"id": 2, "title": "Meryl Streep", "content": "Biography Meryl Streep", "is_published": False},
+    {"id": 3, "title": "Cate Blanchett", "content": "Biography Cate Blanchett", "is_published": True},
+    {"id": 4, "title": "Scarlett Johansson", "content": "Biography Scarlett Johansson", "is_published": True},
+    {"id": 5, "title": "Natalie Portman", "content": "Biography Natalie Portman", "is_published": False},
+    {"id": 6, "title": "Emma Stone", "content": "Biography Emma Stone", "is_published": True},
+]
 
 
 def index(request):
 
     data = {
-        "title": "main page",
+        "title": "Main page",
         "menu": menu,
-        "float": 28.56,
-        "lst": [1, 2, "three", True],
-        "set": {1,2,3,4,5},
-        "dict": {"key_1": "value_1", "key_2": "value_2"},
-        "obj": MyClass(10,20),
+        "posts": data_db,
+
+
+        # "float": 28.56,
+        # "lst": [1, 2, "three", True],
+        # "set": {1,2,3,4,5},
+        # "dict": {"key_1": "value_1", "key_2": "value_2"},
+        # # "obj": MyClass(10,20),
     }
     return render(request, 'women/index.html', data)
 
