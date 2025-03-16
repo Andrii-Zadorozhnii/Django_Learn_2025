@@ -16,7 +16,7 @@ class MyClass:
 def index(request):
 
     data = {
-        "title": "Main page",
+        "title": "main page",
         "menu": menu,
         "float": 28.56,
         "lst": [1, 2, "three", True],

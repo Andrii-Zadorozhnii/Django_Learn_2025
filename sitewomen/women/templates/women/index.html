@@ -5,15 +5,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ title }}</title>
+    <title>{{ title}}</title>
 </head>
 <body>
     <p>{{ menu }}</p>
-    <p>{{ float }}</p>
+    <p>{{ float | divisibleby:"2"}}</p>
     <p>{{ lst }}</p>
     <p>{{ set }}</p>
     <p>{{ dict.key_1 }} {{ dict.key_2 }}</p>
     <p>{{ obj.a }}</p>
-    <h1>{{ title }}</h1>
+    <h1>{{ title | capfirst}}</h1>
+    <h2>{{ title | upper}}</h2>
+    <h3>{{ title | cut:" "}}</h3>
 </body>
 </html>
