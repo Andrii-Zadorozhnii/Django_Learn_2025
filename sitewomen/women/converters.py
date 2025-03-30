@@ -1,10 +1,8 @@
 class FourDigitYearConverter:
-    regex = r"\d{4}"
+    regex = "[0-9]{4}"
 
-    def to_python(self, value: str) -> int:
-        """Преобразует строку в число (год)"""
+    def to_python(self, value):
         return int(value)
 
-    def to_url(self, value: int) -> str:
-        """Преобразует число обратно в строку"""
-        return f"{value}"
+    def to_url(self, value):
+        return "%04d" % value
